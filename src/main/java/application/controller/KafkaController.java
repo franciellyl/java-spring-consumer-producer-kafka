@@ -1,5 +1,6 @@
 package application.controller;
 
+import application.consumer.KafkaConsumer;
 import application.producer.KafkaProducer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/kafka")
 public class KafkaController {
-    private final KafkaProducer topicProducer;
+    private final KafkaProducer kafkaProducer;
     @GetMapping(value = "/send")
     public void send(){
-        topicProducer.send("Mensagem de teste enviada ao tópico");
+        kafkaProducer.send("Test message send to topic.");
     }
 }
